@@ -31,12 +31,12 @@ pub(crate) async fn download(
     ));
     let response = client.get(url).send().await.unwrap();
 
-    bar.set_message(format!("{url}"));
+    bar.set_message(url.to_string());
     bar.set_length(response.content_length().unwrap());
     bar.set_style(
         bar.style()
             .template(
-                format!("{{spinner}} {{msg}} {{wide_bar}} {{bytes}}/{{total_bytes}} | {{binary_bytes_per_sec}} | {{duration_precise}}").as_str()
+                "{spinner} {msg} {wide_bar} {bytes}/{total_bytes} | {binary_bytes_per_sec} | {eta_precise}",
             )
             .unwrap(),
     );

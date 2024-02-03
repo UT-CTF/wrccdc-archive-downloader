@@ -17,10 +17,8 @@ pub(crate) async fn scrape(client: &Client, root: &str) -> Box<[Entry]> {
 
     let bar = ProgressBar::new(paths.len() as u64)
         .with_style(
-            ProgressStyle::with_template(
-                "{spinner} {msg} {wide_bar} {human_pos}/{human_len} {elapsed}",
-            )
-            .unwrap(),
+            ProgressStyle::with_template("{spinner} {msg} {wide_bar} {human_pos}/{human_len}")
+                .unwrap(),
         )
         .with_message("Scanning for Directories!");
 
